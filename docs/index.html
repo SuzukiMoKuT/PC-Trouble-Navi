@@ -4,120 +4,244 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PCトラブルナビ — ダウンロード</title>
-  <meta name="description" content="PC動作診断ツール「PCトラブルナビ」のダウンロードとインストール。完全ローカルでCPU・メモリ・ストレージ・GPU・ネットワークなどを検査できます。">
+  <meta name="description" content="PC動作診断ツール「PCトラブルナビ」のダウンロード。完全ローカルでCPU・メモリ・ストレージ・GPU・ネットワークなどを検査できます。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0c0e14;
-      --card: #151922;
-      --text: #e6edf3;
-      --muted: #8b949e;
-      --accent: #00d4aa;
-      --border: #30363d;
+      --bg: #0a0c10;
+      --bg-card: #12151c;
+      --bg-card-hover: #161a24;
+      --text: #e8ecf1;
+      --text-soft: #9ca3af;
+      --accent: #22d3a6;
+      --accent-dim: #0d3d32;
+      --border: #2a3140;
+      --glow: rgba(34, 211, 166, 0.15);
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "Segoe UI", "Yu Gothic UI", sans-serif;
+      font-family: "Outfit", "Yu Gothic UI", sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem;
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -20%, var(--glow), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(34, 211, 166, 0.06), transparent);
     }
-    .container {
-      max-width: 560px;
-      width: 100%;
+    .page {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
     }
-    h1 {
-      font-size: 1.75rem;
-      font-weight: 600;
+
+    /* ヒーロー + ロゴ */
+    .hero {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .hero-logo {
+      display: block;
+      margin: 0 auto 1.25rem;
+      max-width: min(100%, 420px);
+      height: auto;
+      max-height: 100px;
+      object-fit: contain;
+    }
+    .hero .tagline {
       color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 500;
       margin: 0 0 0.5rem;
     }
-    .subtitle {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
+    .hero .version {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin: 0;
     }
+
+    /* ダウンロードカード */
     .card {
-      background: var(--card);
+      background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem 1.75rem;
-      margin-bottom: 1.5rem;
+      border-radius: 16px;
+      padding: 1.75rem 1.75rem;
+      margin-bottom: 1.25rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: #353d4d;
     }
     .card h2 {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
-      margin: 0 0 0.75rem;
+      margin: 0 0 1rem;
       color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-    .card p {
-      margin: 0 0 0.5rem;
-      font-size: 0.9rem;
-      color: var(--muted);
+    .card h2::before {
+      content: "";
+      width: 4px;
+      height: 1.1em;
+      background: var(--accent);
+      border-radius: 2px;
     }
-    .version {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
+    .card-dl p {
+      margin: 0 0 1.25rem;
+      font-size: 0.95rem;
+      color: var(--text-soft);
     }
     .btn {
-      display: inline-block;
-      background: #0d3d2e;
-      color: var(--accent);
-      border: 1px solid var(--accent);
-      padding: 12px 24px;
-      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--accent) 0%, #1ab892 100%);
+      color: #0a0c10;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-family: inherit;
       font-size: 1rem;
       font-weight: 600;
       text-decoration: none;
       cursor: pointer;
-      transition: background 0.15s;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 20px rgba(34, 211, 166, 0.25);
     }
     .btn:hover {
-      background: #0f4d3a;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 28px rgba(34, 211, 166, 0.35);
+    }
+    .btn:active {
+      transform: translateY(0);
     }
     .btn:focus {
       outline: none;
-      box-shadow: 0 0 0 2px var(--accent);
+      box-shadow: 0 0 0 3px var(--glow);
     }
-    .note {
+    .btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* 機能リスト */
+    .card-features ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .card-features li {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      padding: 0.5rem 0 0.5rem 1.25rem;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .card-features li:last-child {
+      border-bottom: none;
+    }
+    .card-features li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.85rem;
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      opacity: 0.8;
+    }
+    .card-features strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .card-measures .measures-intro {
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      margin: 0 0 1rem;
+    }
+    .card-measures .measures-placeholder {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+    .card-measures .measures-placeholder ul {
+      margin: 0.5rem 0 1rem 1.25rem;
+      padding: 0;
+      list-style: none;
+    }
+    .card-measures .measures-placeholder li {
+      margin-bottom: 0.5rem;
+      padding-left: 0;
+    }
+    .card-measures .measures-placeholder li::before {
+      content: "・";
+      color: var(--accent);
+    }
+
+    .footer-note {
+      text-align: center;
       font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 1.5rem;
+      color: var(--text-soft);
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
     }
-    a { color: var(--accent); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>PCトラブルナビ</h1>
-    <p class="subtitle">PC動作診断 — 完全ローカル</p>
-    <p class="version">バージョン 1.0.0</p>
+  <div class="page">
+    <header class="hero">
+      <img src="PcTroubleNaviLogo.png" alt="PCトラブルナビ" class="hero-logo" width="320" height="80">
+      <p class="tagline">PC動作診断 — 完全ローカル</p>
+      <p class="version">バージョン 1.0.0</p>
+    </header>
 
-    <div class="card">
+    <div class="card card-dl">
       <h2>ダウンロード</h2>
-      <p>Windows 用の実行ファイルです。ZIP を解凍して PcTroubleNavi.exe を起動してください。</p>
-      <p>
-        <a id="download-btn" href="https://github.com/SuzukiMokuT/PC-Trouble-Navi/releases/latest" class="btn">ダウンロード（Releases）</a>
-      </p>
-      <p class="note">※ Releases でビルドした ZIP をアップロードすると、ここからダウンロードできます。</p>
+      <p>Windows 用です。ZIP を解凍して <strong>PcTroubleNavi.exe</strong> を起動してください。インストール不要です。</p>
+      <a id="download-btn" href="https://github.com/SuzukiMokuT/PC-Trouble-Navi/releases/latest" class="btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        ZIP をダウンロード
+      </a>
     </div>
 
-    <div class="card">
+    <div class="card card-features">
       <h2>機能</h2>
-      <p>・簡易検査 … CPU・メモリ・ストレージ・GPU・イベントログなどを数十秒で収集・判定</p>
-      <p>・詳細検査 … 各項目の負荷テスト（約20分〜）</p>
-      <p>・カスタム検査 … 選択した項目だけ詳細検査</p>
-      <p>・ネットワーク検査 … 接続・Ping・速度・DNS の確認</p>
-      <p>・設定 … 表示言語の切り替え、ストレージ書込みテストの同意設定、更新確認</p>
+      <ul>
+        <li><strong>簡易検査</strong> … CPU・メモリ・ストレージ・GPU・イベントログなどを数十秒で収集・判定</li>
+        <li><strong>詳細検査</strong> … 各項目の負荷テスト（約20分〜）</li>
+        <li><strong>カスタム検査</strong> … 選択した項目だけ詳細検査</li>
+        <li><strong>ネットワーク検査</strong> … 接続・Ping・速度・DNS の確認</li>
+        <li><strong>設定</strong> … 表示言語、ストレージ書込みテストの同意、更新確認</li>
+      </ul>
     </div>
 
-    <p class="note">通信は更新確認時のみ。診断データはすべて端末内で処理されます。</p>
+    <!-- 初心者向け・自分でできる対策（アプリの結果画面からここへ誘導できます） -->
+    <div class="card card-measures" id="measures">
+      <h2>自分でできる対策（PC初心者向け）</h2>
+      <p class="measures-intro">検査で「注意」「警告」「危険」が出たときに、まず試せることをまとめています。順に確認してみてください。</p>
+      <div class="measures-placeholder">
+        <p><strong>※ ここに今後、対策記事を追加していきます。</strong></p>
+        <ul>
+          <li><strong>例）CPU・GPUが高温</strong> … 通気口の掃除、冷却ファンの確認、負荷の高いソフトを減らす</li>
+          <li><strong>例）メモリ不足の兆候</strong> … 使っていないアプリを閉じる、スタートアップを整理</li>
+          <li><strong>例）ストレージの空きが少ない</strong> … 不要なファイルの削除、ディスクのクリーンアップ</li>
+          <li><strong>例）イベントログにエラー</strong> … Windows Updateの実行、再起動、同じ操作を繰り返して再現するか確認</li>
+        </ul>
+        <p>具体的な手順は随時このページに追記します。アプリの「検査結果」画面に表示されたリンクからいつでもこのページを開けます。</p>
+      </div>
+    </div>
+
+    <p class="footer-note">通信は更新確認時のみ。診断データはすべて端末内で処理されます。</p>
   </div>
 </body>
 </html>

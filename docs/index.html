@@ -202,16 +202,17 @@
     <header class="hero">
       <img src="PcTroubleNaviLogo.png" alt="PCトラブルナビ" class="hero-logo" width="320" height="80">
       <p class="tagline">PC動作診断 — 完全ローカル</p>
-      <p class="version">バージョン 1.0.0</p>
+      <p class="version" id="version-label">バージョン 1.0.0</p>
     </header>
 
     <div class="card card-dl">
       <h2>ダウンロード</h2>
-      <p>Windows 用です。ZIP を解凍して <strong>PcTroubleNavi.exe</strong> を起動してください。インストール不要です。</p>
-      <a id="download-btn" href="https://github.com/SuzukiMokuT/PC-Trouble-Navi/releases/latest" class="btn">
+      <p>Windows 用です。<strong>下のボタン1つ</strong>でZIPがダウンロードできます。解凍して <strong>PcTroubleNavi.exe</strong> を起動してください。インストール不要です。</p>
+      <a id="download-btn" href="https://github.com/SuzukiMokuT/PC-Trouble-Navi/releases/download/v1.0.0/PcTroubleNavi-1.0.0.zip" class="btn" download>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
         ZIP をダウンロード
       </a>
+      <p class="note" style="margin-top:0.75rem;font-size:0.85rem;">※ ボタンを押すとすぐにダウンロードが始まります。GitHubのページは開きません。</p>
     </div>
 
     <div class="card card-features">
@@ -243,5 +244,19 @@
 
     <p class="footer-note">通信は更新確認時のみ。診断データはすべて端末内で処理されます。</p>
   </div>
+  <script>
+    (function() {
+      fetch('version.json').then(function(r) { return r.json(); }).then(function(d) {
+        if (d.Version) {
+          var el = document.getElementById('version-label');
+          if (el) el.textContent = 'バージョン ' + d.Version;
+        }
+        if (d.DownloadZipUrl) {
+          var btn = document.getElementById('download-btn');
+          if (btn) btn.href = d.DownloadZipUrl;
+        }
+      }).catch(function() {});
+    })();
+  </script>
 </body>
 </html>

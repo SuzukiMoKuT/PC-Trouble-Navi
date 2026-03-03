@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PCトラブルナビ — ダウンロード</title>
+  <meta name="description" content="PC動作診断ツール「PCトラブルナビ」のダウンロードとインストール。完全ローカルでCPU・メモリ・ストレージ・GPU・ネットワークなどを検査できます。">
+  <style>
+    :root {
+      --bg: #0c0e14;
+      --card: #151922;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #00d4aa;
+      --border: #30363d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Yu Gothic UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 560px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0 0 0.5rem;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0 0 0.75rem;
+      color: var(--text);
+    }
+    .card p {
+      margin: 0 0 0.5rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .version {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+    .btn {
+      display: inline-block;
+      background: #0d3d2e;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn:hover {
+      background: #0f4d3a;
+    }
+    .btn:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 1.5rem;
+    }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PCトラブルナビ</h1>
+    <p class="subtitle">PC動作診断 — 完全ローカル</p>
+    <p class="version">バージョン 1.0.0</p>
+
+    <div class="card">
+      <h2>ダウンロード</h2>
+      <p>Windows 用の実行ファイルです。ZIP を解凍して PcTroubleNavi.exe を起動してください。</p>
+      <p>
+        <a id="download-btn" href="https://github.com/SuzukiMokuT/PC-Trouble-Navi/releases/latest" class="btn">ダウンロード（Releases）</a>
+      </p>
+      <p class="note">※ Releases でビルドした ZIP をアップロードすると、ここからダウンロードできます。</p>
+    </div>
+
+    <div class="card">
+      <h2>機能</h2>
+      <p>・簡易検査 … CPU・メモリ・ストレージ・GPU・イベントログなどを数十秒で収集・判定</p>
+      <p>・詳細検査 … 各項目の負荷テスト（約20分〜）</p>
+      <p>・カスタム検査 … 選択した項目だけ詳細検査</p>
+      <p>・ネットワーク検査 … 接続・Ping・速度・DNS の確認</p>
+      <p>・設定 … 表示言語の切り替え、ストレージ書込みテストの同意設定、更新確認</p>
+    </div>
+
+    <p class="note">通信は更新確認時のみ。診断データはすべて端末内で処理されます。</p>
+  </div>
+</body>
+</html>
